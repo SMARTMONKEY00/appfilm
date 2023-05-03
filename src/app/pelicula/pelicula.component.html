@@ -1,0 +1,89 @@
+<div *ngIf="!mostrarPanelForm">
+    <nav class="navbar navbar-dark fixed-top bg-success shadow-sm">
+        <div class="container">
+            <a class="navbar-brand">
+                Lista de Peliculas
+            </a>
+        </div>
+    </nav>
+
+    <div class="album py-5  bg-light">
+        <div class="container mt-3">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col" *ngFor="let peli of listaPelis">
+                    <div class="card shadow-sm">
+                        <img src="../../assets/imagen/icono-cine.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text">{{peli.title}}</h3>
+                            <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-camera-reels-fill" viewBox="0 0 16 16">
+                                    <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path d="M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+                                    <path
+                                        d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7z" />
+                                </svg> {{peli.director}}</p>
+                            <footer class="blockquote-footer">fecha de lanzamiento {{peli.release_date}}</footer>
+
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button (click)="verDetalle(peli)" type="button"
+                                        class="btn btn-sm btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg"
+                                            width="16" height="16" fill="currentColor" class="bi bi-eye-fill"
+                                            viewBox="0 0 16 16">
+                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+                                            <path
+                                                d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z">
+                                            </path>
+                                        </svg> Ver Detalle </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div *ngIf="mostrarPanelForm">
+    <div class="bg-success me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center  overflow-hidden">
+        <a class="btn btn-outline-light" (click)="cancelar()"> Cancelar</a>
+        <div class="my-3 py-3 text-white">
+            <h2 class="display-5">{{pelicula.title}}</h2>
+            <p class="lead">Director (a) :: {{pelicula.director}}</p>
+        </div>
+
+        <div class="row mb-5 align-items-md-stretch">
+            <div class="col-md-6">
+                <div class="h-100 p-5 text-white bg-dark justify-content-between rounded-3">
+                    <h2>Resumen</h2>
+                    <p>{{pelicula.opening_crawl}}</p>
+                    <p>Productora :: {{pelicula.producer}}</p>
+                    <footer class="blockquote-footer">fecha de lanzamiento {{pelicula.release_date}}</footer>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <h2>Lista de Personajes</h2>
+                    <table class="table" >
+                        <thead>
+                            <tr>
+                                <th>Nombres</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let personaje of listaPersonajes">
+                            <tr>
+                                <td>{{personaje.name}}</td>  
+                            </tr>                           
+                        </tbody>                       
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
